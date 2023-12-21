@@ -3,7 +3,7 @@ import Aside from './Aside'
 
 function ProductsSection() {
   return (
-    <div>
+    <div className='products-section'>
       <Aside />
     </div>
   )

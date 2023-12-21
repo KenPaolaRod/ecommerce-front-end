@@ -3,9 +3,11 @@ export const ProductsContext = createContext()
 
 
 export const ProductsProvider = ({children}) => {
-  const [user, setUser] = useState({ username: null, email: null });
   const [products, setproducts] = useState('');
+  const [selectedButton, setSelectedButton] = useState(null);
 
+
+  // fetching Products
     useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -24,9 +26,15 @@ export const ProductsProvider = ({children}) => {
   }, []);
 
 
+  // showing when a btn is selected
+  const handleButtonClick = (index) => {
+    setSelectedButton(index);
+  };
+ 
+
   const data = {
-    user,
-    products
+    selectedButton,
+    handleButtonClick
   };
   return <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
 }

@@ -12,7 +12,7 @@ export class Header extends Component {
       <header>
         <nav>
           <div className='nav-logo'>
-            <a href="#"><img src="./../../public/images/Kencool-logo.png" alt="logo img" /></a>
+            <a href="#"><img src="/images/Kencool-logo.png" alt="logo img" /></a>
           </div>
           <ul className='nav-links'>
             <li><FaShoppingCart/></li>

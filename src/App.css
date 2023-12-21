@@ -42,7 +42,7 @@ nav img {
 }
 
 .home-hero {
-  background-image: url(../public/images/hero.png);
+  background-image: url(/images/hero.png);
   background-position: 53% 20%;
   background-repeat: no-repeat;
   width: 85%;
@@ -58,6 +58,40 @@ nav img {
   -webkit-animation: bounce 2s ease-in-out infinite;
           animation: bounce 2s ease-in-out infinite;
 
+}
+
+.aside {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  width: 300px;
+  margin: 1.7rem auto;
+}
+
+.btn {
+  height: 50px;
+  border-radius: 36px;
+  cursor: pointer;  
+  border: none;
+}
+
+.btn-aside {
+  background-color: var(--bg-color-light);
+  width: 6rem;
+  height: 2.8rem;
+  font-size: 1.2rem;
+  padding: 0.1rem;
+  background-color: var(--bg-color-medium);
+}
+
+.btn-aside:hover {
+  background-color: var(--bg-color-dark);
+  color: var(--bg-color-medium);
+}
+
+.btnClicked {
+  background-color: var(--bg-color-dark);
+  color: var(--color-medium);
 }
 
 @-webkit-keyframes bounce {
@@ -88,6 +122,16 @@ nav img {
   nav img {
     width: 80px;
   }
+
+  .aside {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    margin: 3rem 3rem;
+    width: 130px;
+    row-gap: 1rem;
+  }
+
+
 }
 
 @media screen and (min-width: 1024px ) {
@@ -100,6 +144,11 @@ nav img {
     color: var(--color-light);
     font-size: 5rem;
     padding: 6rem 1rem;
+  }
+
+  .aside {
+
+    margin: 3rem 7rem;
   }
 
 

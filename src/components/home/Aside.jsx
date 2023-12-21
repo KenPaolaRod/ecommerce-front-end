@@ -1,25 +1,32 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { ProductsContext } from '../../contex/productsContext'
+import React, { useEffect, useState, useContext } from 'react';
+import { ProductsContext } from '../../contex/productsContext';
+import Button from '../Button';
 
 function Aside() {
-const categoriesCtx = useContext(ProductsContext)
-const { products } = categoriesCtx;
+const prodctsCtx = useContext(ProductsContext)
+const {selectedButton, handleButtonClick} = prodctsCtx;
 
-useEffect(() => {
-if (Array.isArray(products)) {
-  products.forEach(objeto => {
-    const categoria = objeto.category;
-    console.log(categoria);
-    // Puedes hacer lo que necesites con la propiedad "category" aquí
-  });
-} else {
-  console.error('La respuesta no es un array:', products);
-}
-},[products])
+const categories = ["Coats", "Tops", "Pants"]
 
 
+{/* <div className='aside'>
+{Array.isArray(products) && products.map(el => (
+   <Button key={el._id} btnClass="btn-aside" text={el.category}/>)) }
+</div> */}
+  
   return (
-    <div>NavSection</div>
+    <div className='aside'>
+      {
+        categories.map((category, i) => (
+          <Button 
+            key={i} 
+            btnClass={`btn-aside ${selectedButton === i ? 'btnClicked' : ''}`}
+            text={category}
+            onClick={() => handleButtonClick(i)}
+           />
+          ))}
+    </div>
+
   )
 }
 
