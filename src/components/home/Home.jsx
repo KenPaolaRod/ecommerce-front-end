@@ -6,7 +6,6 @@ import ProductsSection from './productsSection'
 function Home() {
   return (
     <div>
-      <Header />
       <HeroSection />
       <ProductsSection/>
     </div>

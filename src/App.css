@@ -26,6 +26,7 @@ header nav {
   grid-template-columns: 1fr min-content min-content;
   align-items: center;
   padding: 0 2.5rem;
+  position: relative;
 }
 
 nav img {
@@ -40,6 +41,37 @@ nav img {
   list-style-type: none;
   font-size: 1.2rem;
 }
+
+nav a {
+  color: var(--color-dark);
+}
+
+nav a:hover{
+  color: var(--bg-color-dark);
+}
+
+.subNav {
+  background-color: var(--bg-color-dark);
+  position: absolute;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-left: -2rem;
+  border-radius: 1rem;
+}
+
+.subNav li {
+  list-style-type: none;
+  padding: .5rem;
+}
+
+.subNav a {
+  color: var(--color-light);
+}
+
+.subNav a:hover {
+  color: var(--color-dark);
+}
+
 
 .home-hero {
   background-image: url(/images/hero.png);

@@ -27,6 +27,12 @@ export const ProductsProvider = ({children}) => {
 
 
   // showing when a btn is selected
+  useEffect(() => {
+    const initialSelectedButtonIndex = 0;
+
+    setSelectedButton(initialSelectedButtonIndex);
+  }, []);
+
   const handleButtonClick = (index) => {
     setSelectedButton(index);
   };
