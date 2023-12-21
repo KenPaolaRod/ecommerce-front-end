@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { FaShoppingCart } from 'react-icons/fa';
+import { FaUserAlt } from "react-icons/fa";
+
+
 
 export class Header extends Component {
   static propTypes = {}
@@ -7,8 +11,13 @@ export class Header extends Component {
     return (
       <header>
         <nav>
-          <ul>
-            <li><a href="#"><img src="./../../public/images/Kencool-logo.png" alt="logo img" /></a></li>
+          <div className='nav-logo'>
+            <a href="#"><img src="./../../public/images/Kencool-logo.png" alt="logo img" /></a>
+          </div>
+          <ul className='nav-links'>
+            <li><FaShoppingCart/></li>
+            <li><FaUserAlt /></li>
+            <li>USD</li>
           </ul>
         </nav>
       </header>

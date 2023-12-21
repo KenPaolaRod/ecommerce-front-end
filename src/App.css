@@ -1,10 +1,106 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700&family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Saira Semi Condensed', sans-serif
 }
 
-/* .home-hero {
-  font-size: 20rem;
-} */
+:root {
+  --color-light: #F9F6F2;
+  --color-medium: #E9C4EA;
+  --color-dark: #000;
+
+  --bg-color-light: #fff;
+  --bg-color-medium: #F9F6F2;
+  --bg-color-dark: #9175DB;
+
+
+}
+
+header nav {
+  display: grid;
+  grid-template-columns: 1fr -webkit-min-content -webkit-min-content;
+  grid-template-columns: 1fr min-content min-content;
+  align-items: center;
+  padding: 0 2.5rem;
+}
+
+nav img {
+  width: 70px;
+}
+
+.nav-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+  list-style-type: none;
+  font-size: 1.2rem;
+}
+
+.home-hero {
+  background-image: url(../public/images/hero.png);
+  background-position: 53% 20%;
+  background-repeat: no-repeat;
+  width: 85%;
+  height: 18rem;
+  margin: 2rem auto 0;
+  border-radius: 3.25rem;
+}
+
+.home-hero h1 {
+  color: var(--color-light);
+  font-size: 3.5rem;
+  padding: 3rem 1rem;
+  -webkit-animation: bounce 2s ease-in-out infinite;
+          animation: bounce 2s ease-in-out infinite;
+
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    transform: translateX(0)
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  nav img {
+    width: 80px;
+  }
+}
+
+@media screen and (min-width: 1024px ) {
+  .home-hero {
+    background-position: 50% 20%;
+    height: 25rem;
+  }
+
+  .home-hero h1 {
+    color: var(--color-light);
+    font-size: 5rem;
+    padding: 6rem 1rem;
+  }
+
+
+}
