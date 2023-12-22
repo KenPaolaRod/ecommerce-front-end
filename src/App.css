@@ -100,29 +100,33 @@ nav a:hover{
   margin: 1.7rem auto;
 }
 
-.btn {
+.btn, .aside a {
   height: 50px;
   border-radius: 36px;
   cursor: pointer;  
   border: none;
+  text-decoration: none;
+  text-align: center;
+  /* justify-self: center; */
+  align-self: center;
 }
 
-.btn-aside {
+.aside a {
   background-color: var(--bg-color-light);
   width: 6rem;
-  height: 2.8rem;
+  height: 2.4rem;
   font-size: 1.2rem;
   padding: 0.1rem;
   background-color: var(--bg-color-medium);
 }
 
-.btn-aside:hover {
+.aside a:hover {
   background-color: var(--bg-color-dark);
   color: var(--bg-color-medium);
 }
 
-.btnClicked {
-  background-color: var(--bg-color-dark);
+.aside a.btnClicked {
+  background-color: var(--bg-color-dark) ;
   color: var(--color-medium);
 }
 
