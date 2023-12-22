@@ -5,6 +5,9 @@ export const ProductsContext = createContext()
 export const ProductsProvider = ({children}) => {
   const [products, setproducts] = useState('');
   const [selectedButton, setSelectedButton] = useState(null);
+  const [categories, setcategories] = useState([]);
+  // const selectedCategory = categories[selectedButton];
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
 
   // fetching Products
@@ -14,7 +17,12 @@ export const ProductsProvider = ({children}) => {
         const response = await fetch('https://apiecommerce-dxby.onrender.com/api/products');
         const data = await response.json();
 
-        setproducts(data.data.products)
+        // getting only categories 
+        const categoriesSet = new Set(data.data.products.map(product => product.category));
+        const categoriesArray = Array.from(categoriesSet);
+        setcategories(categoriesArray);
+
+        setproducts(data.data.products);
 
       } catch (error) {
         console.log('Error fetching products', error);
@@ -31,16 +39,24 @@ export const ProductsProvider = ({children}) => {
     const initialSelectedButtonIndex = 0;
 
     setSelectedButton(initialSelectedButtonIndex);
-  }, []);
+    setSelectedCategory(categories[initialSelectedButtonIndex]);
+
+
+  }, [categories]);
 
   const handleButtonClick = (index) => {
     setSelectedButton(index);
+    setSelectedCategory(categories[index]);
+
   };
- 
+
+
 
   const data = {
     selectedButton,
-    handleButtonClick
+    categories,
+    handleButtonClick,
+    selectedCategory
   };
   return <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
 }

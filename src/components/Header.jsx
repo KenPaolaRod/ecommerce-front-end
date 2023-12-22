@@ -19,7 +19,6 @@ function Header() {
     };
 
     useEffect(() => {
-      // Limpiar el temporizador si el componente se desmonta o el estado cambia
       return () => clearTimeout();
     }, [isSubNavVisible]);
     

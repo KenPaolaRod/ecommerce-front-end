@@ -4,16 +4,8 @@ import Button from '../Button';
 
 function Aside() {
 const prodctsCtx = useContext(ProductsContext)
-const {selectedButton, handleButtonClick} = prodctsCtx;
+const {selectedButton, handleButtonClick, categories} = prodctsCtx;
 
-const categories = ["Coats", "Tops", "Pants"]
-
-
-{/* <div className='aside'>
-{Array.isArray(products) && products.map(el => (
-   <Button key={el._id} btnClass="btn-aside" text={el.category}/>)) }
-</div> */}
-  
   return (
     <div className='aside'>
       {
@@ -25,6 +17,7 @@ const categories = ["Coats", "Tops", "Pants"]
             onClick={() => handleButtonClick(i)}
            />
           ))}
+
     </div>
 
   )
