@@ -17,11 +17,12 @@ export const ProductsProvider = ({children}) => {
         const response = await fetch('https://apiecommerce-dxby.onrender.com/api/products');
         const data = await response.json();
 
-        // getting only categories 
+        // getting only products categories 
         const categoriesSet = new Set(data.data.products.map(product => product.category));
         const categoriesArray = Array.from(categoriesSet);
         setcategories(categoriesArray);
 
+        // Getting products
         setproducts(data.data.products);
 
       } catch (error) {
@@ -56,7 +57,8 @@ export const ProductsProvider = ({children}) => {
     selectedButton,
     categories,
     handleButtonClick,
-    selectedCategory
+    selectedCategory,
+    products
   };
   return <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
 }
