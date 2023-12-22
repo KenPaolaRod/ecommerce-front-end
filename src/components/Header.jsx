@@ -26,7 +26,7 @@ function Header() {
     <header>
         <nav className='mainNav'>
           <div className='nav-logo'>
-            <Link to="/home"><img src="/images/Kencool-logo.png" alt="logo img" /></Link> 
+            <Link to="/"><img src="/images/Kencool-logo.png" alt="logo img" /></Link> 
           </div>
           <ul className='nav-links'>
             <li> <Link to="/shoppingCard"> <FaShoppingCart/> </Link> </li>
@@ -45,7 +45,6 @@ function Header() {
           </ul>
         </nav>
 
-        <Outlet/>
       </header>
   )
 }

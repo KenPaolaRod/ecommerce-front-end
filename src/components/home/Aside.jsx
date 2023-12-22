@@ -8,18 +8,6 @@ const prodctsCtx = useContext(ProductsContext)
 const {selectedButton, handleButtonClick, categories} = prodctsCtx;
 
   return (
-    // <div className='aside'>
-    //   {
-    //     categories.map((category, i) => (
-    //       <Button 
-    //         key={i} 
-    //         btnClass={`btn-aside ${selectedButton === i ? 'btnClicked' : ''}`}
-    //         text={category}
-    //         onClick={() => handleButtonClick(i)}
-    //        />
-    //       ))}
-
-    // </div>
 
     <div className='aside'>
       {categories.map((category, i) => (
