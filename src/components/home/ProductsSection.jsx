@@ -22,7 +22,7 @@ function ProductsSection() {
         {    
                 
           category.map(el => (
-            <Link key={el._id} to={`/product/${el._id} `}>
+            <Link style={{textDecoration: 'none'}} key={el._id} to={`/product/${el._id} `}>
             <ProductCard 
             key={el._id} btnClass="btn-aside" 
             pictures={el.pictures[0]} 

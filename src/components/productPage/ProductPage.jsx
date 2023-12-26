@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import {ProductsContext} from '../contex/productsContext'
-import Header from './header'
+import {ProductsContext} from '../../contex/productsContext'
+import Header from '../header'
 import ProductDetail from './ProductDetail'
 
 

@@ -152,6 +152,13 @@ nav a:hover{
 .product-card {
   width: 280px;
   height: 300px;
+  color: var(--color-dark);
+  
+}
+
+.product-card a {
+  text-decoration: none;
+
 }
 
 
@@ -205,6 +212,12 @@ nav a:hover{
 .price span {
   color: var(--bg-color-dark);
   font-weight: 600;
+}
+
+.product-info .btn.btnClicked {
+  background-color: var(--bg-color-light);
+  color: var(--color-dark);
+  border: var(--color-dark) solid 1px;
 }
 
 

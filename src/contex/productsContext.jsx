@@ -7,7 +7,7 @@ export const ProductsProvider = ({children}) => {
   const [selectedButton, setSelectedButton] = useState(null);
   const [categories, setcategories] = useState([]);
   // const selectedCategory = categories[selectedButton];
-  const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
 
   // fetching Products
@@ -53,12 +53,13 @@ export const ProductsProvider = ({children}) => {
 
 
 
+
   const data = {
     selectedButton,
     categories,
     handleButtonClick,
     selectedCategory,
-    products
+    products,
   };
   return <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
 }
