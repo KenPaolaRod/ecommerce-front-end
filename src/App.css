@@ -220,13 +220,13 @@ nav a:hover{
   border: var(--color-dark) solid 1px;
 }
 
-.log-in {
+.log-in, .signIn {
   display: grid;
   justify-items: center;
   row-gap: 1rem;
 }
 
-.log-in input {
+.log-in input, .signIn input {
   width: 31rem;
 }
 
