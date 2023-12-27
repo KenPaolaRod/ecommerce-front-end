@@ -232,7 +232,35 @@ nav a:hover{
 
 input {
   background-color: var(--bg-color-medium);
-  border-radius: 36px;
+  border-radius: 2.2rem;
+}
+
+.userAdmin {
+  background-color: var(--bg-color-medium);
+  display: grid;
+  width: 17.5rem;
+  margin: 2rem auto;
+  border-radius: 1.8rem;
+  padding: 1rem;
+  grid-template-columns: repeat(3, -webkit-max-content);
+  grid-template-columns: repeat(3, max-content);
+  row-gap: 1rem;
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+}
+
+.userAdmin h2 {
+  font-size: 1.3rem;
+  color: var(--bg-color-dark);
+  grid-column: 1 / -1;
+  text-align: start;
+}
+
+.orders-box {
+  display: grid;
+  /* align-self: center; */
+  justify-items: center;
+
 }
 
 
@@ -301,6 +329,9 @@ input {
     padding-left: 0;
   }
 
+  .userAdmin {
+    width: 30rem;
+  }
 
 }
 

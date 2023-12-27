@@ -6,6 +6,7 @@ import ProductsSection from './components/home/productsSection'
 import ProductPage from './components/productPage/ProductPage'
 import LogIn from './components/logIn/LogIn'
 import SignIn from './components/signIn/SignIn'
+import User from './components/userAdmin/User'
 
 
 
@@ -22,6 +23,7 @@ function App() {
       <Route path="/product/:productId" element={<ProductPage />} />
       <Route path='/logIn' element={<LogIn />}  />
       <Route path='/sigIn' element={<SignIn />}  />
+      <Route path='/UserAdmin' element={<User />}  />
 
 
     </Routes>

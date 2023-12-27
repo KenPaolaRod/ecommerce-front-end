@@ -31,7 +31,7 @@ function Header() {
           <ul className='nav-links'>
             <li> <Link to="/shoppingCard"> <FaShoppingCart/> </Link> </li>
             <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-               <Link to={`/User`}> <FaUserAlt /> </Link>
+               <Link to={`/UserAdmin`}> <FaUserAlt /> </Link>
                {isSubNavVisible && (
               <div className="subNav">
                 <ul>
