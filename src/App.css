@@ -220,6 +220,21 @@ nav a:hover{
   border: var(--color-dark) solid 1px;
 }
 
+.log-in {
+  display: grid;
+  justify-items: center;
+  row-gap: 1rem;
+}
+
+.log-in input {
+  width: 31rem;
+}
+
+input {
+  background-color: var(--bg-color-medium);
+  border-radius: 36px;
+}
+
 
 @-webkit-keyframes bounce {
   0% {

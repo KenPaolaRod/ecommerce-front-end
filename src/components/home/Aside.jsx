@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { ProductsContext } from '../../contex/productsContext';
 import { Link } from 'react-router-dom';
-import Button from '../Button';
 
 function Aside() {
 const prodctsCtx = useContext(ProductsContext)
