@@ -9,7 +9,10 @@ export const ProductsProvider = ({children}) => {
   const [categories, setcategories] = useState([]);
   // const selectedCategory = categories[selectedButton];
   const [selectedCategory, setSelectedCategory] = useState(null);
-  
+  const [productQuantities, setProductQuantities] = useState({});
+
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+
   const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
   const [cart, setCart] = useState(initialCart)
 
@@ -59,20 +62,57 @@ export const ProductsProvider = ({children}) => {
 
   };
 
-   // Función para agregar un producto al carrito
-   const addToCart = (product) => {
-    // setCart((prevCart) => (Array.isArray(prevCart) ? [...prevCart, product] : [product]));
-    setCart((prevCart) => [...prevCart, product]);
+const addToCart = (productId, selectedColor, selectedSize, selectedQuantity) => {
+  const existingProductIndex = cart.findIndex(
+    (item) =>
+      item._id === productId &&
+      item.selectedColor === selectedColor &&
+      item.selectedSize === selectedSize
+  );
 
-  };
+  if (existingProductIndex !== -1) {
+    // The product is already in the cart, update the quantity
+    const updatedCart = [...cart];
+    updatedCart[existingProductIndex].quantity += selectedQuantity;
+    setCart(updatedCart);
+  } else {
+    // The product is not in the cart with the same size and color, add it as a new item
+    const productToAdd = products.find((product) => product._id === productId);
+    if (productToAdd) {
+      setCart([
+        ...cart,
+        {
+          ...productToAdd,
+          selectedColor,
+          selectedSize,
+          quantity: selectedQuantity,
+        },
+      ]);
+    }
+  }
+};
 
-  // Función para quitar un producto del carrito
+  // Function to remove a product from the cart
   const removeFromCart = (productId) => {
     const updatedCart = cart.filter((product) => product._id !== productId);
     setCart(updatedCart);
   };
 
-    // Almacena el carrito en localStorage cada vez que cambia
+
+  const updateCartItemQuantity = (productId, selectedColor, selectedSize, newQuantity) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item._id === productId &&
+        item.selectedColor === selectedColor &&
+        item.selectedSize === selectedSize
+          ? { ...item, quantity: newQuantity }
+          : item
+      )
+    );
+  };  
+  
+
+    // Storing the cart in localStorage every time it changes
     useEffect(() => {
       localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
@@ -88,10 +128,11 @@ export const ProductsProvider = ({children}) => {
     cart,
     addToCart,
     removeFromCart,
+    updateCartItemQuantity
   };
 
   if (loading) {
-    return <p className='loading'>Loading...</p>;  // Puedes mostrar un mensaje de carga mientras los datos se están recuperando
+    return <p className='loading'>Loading...</p>; //while waiting for the data, this p tag is gonna be shown
   }
   return <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
 }

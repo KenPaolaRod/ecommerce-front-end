@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ProductsContext } from '../../contex/productsContext'
 import Header from '../Header'
 import ProductCard from '../home/ProductCard';
@@ -8,15 +8,16 @@ import Button from '../Button'
 
 function ShoppingCart() {
   const productsCtx = useContext(ProductsContext);
-  const { cart, removeFromCart } = productsCtx;
+  const { cart, removeFromCart, updateCartItemQuantity } = productsCtx;
 
   const cartLength = cart ? cart.length : 0;
 
 
-  // Función para calcular el total del carrito
+  // Function to calculate the cart total
   const calcularTotal = () => {
-    return cart.reduce((total, product) => total + product.price, 0).toFixed(2);
+    return cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
   };
+    
 
   return (
     <div className='cart-container'>
@@ -29,23 +30,28 @@ function ShoppingCart() {
       ) : (
         <div>
           {cart.map((product) => (
-            // <div key={product._id} className='cart-item'>
-            //   <img src={product.pictures[0]} alt={product.title} />
-            //   <div className='cart-item-info'>
-            //     <h3>{product.title}</h3>
-            //     <span>${product.price.toFixed(2)}</span>
-            //     <button onClick={() => removeFromCart(product._id)}>Quitar del carrito</button>
-            //   </div>
-            // </div>
-            <div key={product._id}>
+            <div key={`${product._id}-${product.selectedSize}`}>
             <ProductCard 
             btnClass="btn-aside" 
-            pictures={product.pictures[0]} 
+            pictures={product.pictures} 
             title={product.title} 
             price={product.price}
             />
+            <div className="quantity-controls">
+              <label>Cantidad:</label>
+              <input
+                type="number"
+                min="1"
+                value={typeof product.quantity === 'number' ? product.quantity : 1} 
+                onChange={(e) => updateCartItemQuantity(product._id, product.selectedColor, product.selectedSize, parseInt(e.target.value))  }
+
+              />
+            </div>
+            <div>
             <Button text={'remove'} onClick={() => removeFromCart(product._id)}/>
-           </div>
+            </div>
+            </div>
+           
           ))}
           <div className='cart-total'>
             <h4>Total: ${calcularTotal()}</h4>

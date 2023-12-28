@@ -8,8 +8,11 @@ function ProductDetail() {
   const productCtx = useContext(ProductsContext);
   const {products, addToCart} = productCtx;
   const ProductId = useParams();
-  const [selectedColor, setSelectedColor] = useState([]);
-  const [selectedSize, setSelectedSize] = useState([]);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedQuantity, setSelectedQuantity] = useState(1); // Cantidad inicial
+
+
 
   const handleColorButtonClick = (index) => {
     setSelectedColor(index);
@@ -19,27 +22,19 @@ function ProductDetail() {
     setSelectedSize(index)
   };
 
-  // const handleAddToCart = () => {
-  //   if (selectedColor !== null && selectedSize !== null) {
-  //     const selectedVariant = {
-  //       id: product._id,
-  //       title: product.title,
-  //       price: product.price,
-  //       color: product.colors[selectedColor],
-  //       size: productSize[selectedSize],
-  //     };
+  const handleAddToCart = () => {
+    if (selectedColor !== null && selectedSize !== null) {
+      addToCart(ProductId.productId, selectedColor, selectedSize, selectedQuantity);
+  
+      setSelectedColor(null);
+      setSelectedSize(null);
+      setSelectedQuantity(1);
+    } else {
+      console.log('Por favor, selecciona color y tamaño antes de agregar al carrito');
+    }
+  };
 
-  //     // Llama a la función addToCart del contexto
-  //     addToCart(selectedVariant);
 
-  //     // Restablece los estados después de agregar al carrito si es necesario
-  //     setSelectedColor(null);
-  //     setSelectedSize(null);
-  //   } else {
-  //     // Puedes mostrar un mensaje de error si color y tamaño no están seleccionados
-  //     console.log('Please select color and size before adding to cart');
-  //   }
-  // };
 
   // identify what is the id of the product to be displayed
   const product = Array.isArray(products) ? products.find(product => product._id === ProductId.productId) : [];
@@ -75,7 +70,7 @@ function ProductDetail() {
           <span>${product.price}</span>
         </div>
 
-        <Button btnClass='addToCard' text='add to cart' />
+        <Button btnClass='addToCard' text='add to cart' onClick={handleAddToCart} />
       </div>
     </article>
   )
