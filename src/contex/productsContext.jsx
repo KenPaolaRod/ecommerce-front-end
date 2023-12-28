@@ -3,11 +3,16 @@ export const ProductsContext = createContext()
 
 
 export const ProductsProvider = ({children}) => {
-  const [products, setproducts] = useState('');
+  const [products, setproducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [selectedButton, setSelectedButton] = useState(null);
   const [categories, setcategories] = useState([]);
   // const selectedCategory = categories[selectedButton];
   const [selectedCategory, setSelectedCategory] = useState(null);
+  
+  const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
+  const [cart, setCart] = useState(initialCart)
+
 
 
   // fetching Products
@@ -24,6 +29,9 @@ export const ProductsProvider = ({children}) => {
 
         // Getting products
         setproducts(data.data.products);
+
+        setLoading(false);
+
 
       } catch (error) {
         console.log('Error fetching products', error);
@@ -51,6 +59,23 @@ export const ProductsProvider = ({children}) => {
 
   };
 
+   // Función para agregar un producto al carrito
+   const addToCart = (product) => {
+    // setCart((prevCart) => (Array.isArray(prevCart) ? [...prevCart, product] : [product]));
+    setCart((prevCart) => [...prevCart, product]);
+
+  };
+
+  // Función para quitar un producto del carrito
+  const removeFromCart = (productId) => {
+    const updatedCart = cart.filter((product) => product._id !== productId);
+    setCart(updatedCart);
+  };
+
+    // Almacena el carrito en localStorage cada vez que cambia
+    useEffect(() => {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
 
 
 
@@ -60,7 +85,14 @@ export const ProductsProvider = ({children}) => {
     handleButtonClick,
     selectedCategory,
     products,
+    cart,
+    addToCart,
+    removeFromCart,
   };
+
+  if (loading) {
+    return <p className='loading'>Loading...</p>;  // Puedes mostrar un mensaje de carga mientras los datos se están recuperando
+  }
   return <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
 }
 

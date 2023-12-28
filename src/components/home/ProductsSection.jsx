@@ -8,7 +8,7 @@ import ProductCard from './ProductCard'
 
 function ProductsSection() {
   const productsCtx = useContext(ProductsContext)
-  const {products, selectedCategory} = productsCtx;
+  const {products, selectedCategory, cart, addToCart} = productsCtx;
 
   const category = Array.isArray(products) ? products.filter((el) => el.category === selectedCategory ) : [];
             
@@ -22,7 +22,8 @@ function ProductsSection() {
         {    
                 
           category.map(el => (
-            <Link style={{textDecoration: 'none'}} key={el._id} to={`/product/${el._id} `}>
+           <div key={el._id}>
+            <Link style={{textDecoration: 'none'}}  to={`/product/${el._id} `}>
             <ProductCard 
             key={el._id} btnClass="btn-aside" 
             pictures={el.pictures[0]} 
@@ -30,7 +31,11 @@ function ProductsSection() {
             price={el.price}
             />
             </Link>
+            <button onClick={() => addToCart(el)}>Agregar al carrito</button>
+
+            </div>
             ))
+
         }
       </div>
 

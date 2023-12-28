@@ -72,6 +72,19 @@ nav a:hover{
   color: var(--color-dark);
 }
 
+.navCart {
+  display: grid;
+  grid-template-columns: repeat(2, -webkit-min-content);
+  grid-template-columns: repeat(2, min-content);
+  -moz-column-gap:  .2rem;
+       column-gap:  .2rem;
+  text-decoration: none;
+}
+
+.navCart span {
+  font-size: 1rem;
+}
+
 
 .home-hero {
   background-image: url(/images/hero.png);
@@ -261,6 +274,17 @@ input {
   /* align-self: center; */
   justify-items: center;
 
+}
+
+.cart-total {
+  margin-top: 3rem;
+}
+
+.loading {
+  font-size: 4rem;
+  text-align: center;
+  color: var(--bg-color-dark);
+  margin-top: 5rem;
 }
 
 

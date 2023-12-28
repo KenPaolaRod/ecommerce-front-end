@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../header'
+import Header from '../Header'
 import HeroSection from './HeroSection'
-import ProductsSection from './productsSection'
+import ProductsSection from './ProductsSection'
 
 function Home() {
   return (
