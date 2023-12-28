@@ -30,7 +30,7 @@ function ShoppingCart() {
       ) : (
         <div>
           {cart.map((product) => (
-            <div key={`${product._id}-${product.selectedSize}`}>
+            <div key={`${product._id}-${product.selectedSize}-${product.selectedColor}`}>
             <ProductCard 
             btnClass="btn-aside" 
             pictures={product.pictures} 
@@ -48,7 +48,7 @@ function ShoppingCart() {
               />
             </div>
             <div>
-            <Button text={'remove'} onClick={() => removeFromCart(product._id)}/>
+            <Button text={'remove'} onClick={() => removeFromCart(product._id, product.selectedColor, product.selectedSize)} />
             </div>
             </div>
            

@@ -92,12 +92,21 @@ const addToCart = (productId, selectedColor, selectedSize, selectedQuantity) => 
   }
 };
 
-  // Function to remove a product from the cart
-  const removeFromCart = (productId) => {
-    const updatedCart = cart.filter((product) => product._id !== productId);
+
+  const removeFromCart = (productId, selectedColor, selectedSize) => {
+    const updatedCart = cart.filter((product) => {
+      // Checks if the product has the same id, color and size
+      const isMatchingProduct =
+        product._id === productId &&
+        product.selectedColor === selectedColor &&
+        product.selectedSize === selectedSize;
+  
+      return !isMatchingProduct;
+    });
+  
     setCart(updatedCart);
   };
-
+  
 
   const updateCartItemQuantity = (productId, selectedColor, selectedSize, newQuantity) => {
     setCart((prevCart) =>
