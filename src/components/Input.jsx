@@ -1,23 +1,6 @@
 import React from 'react'
 
-// function Input({inpType, title, placeholder}) {
-//  const inputType = inpType || 'text'
-
-//   return (
-//     <div>
-//     <label htmlFor={inpType}>{title}</label>
-//     <input
-//       id={inpType}
-//       name={inpType}
-//       type={inputType}
-//       placeholder={placeholder}
-//       required
-//     />
-//   </div>
-//   )
-// }
-
-function Input({inpType}) {
+function Input({inpType, onChange}) {
   const inputType = {
     username: {title: 'usernamee', type: 'text'},
     email: {title: 'Email', type: 'mail'},
@@ -32,6 +15,7 @@ function Input({inpType}) {
        type={inputType[inpType].type}
        placeholder={inputType[inpType].title}
        required
+       onChange={onChange}
      />
    )
  }

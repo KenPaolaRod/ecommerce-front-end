@@ -1,7 +1,6 @@
 import {useState, createContext, useEffect} from 'react'
 export const ProductsContext = createContext()
 
-
 export const ProductsProvider = ({children}) => {
   const [products, setproducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,9 +16,8 @@ export const ProductsProvider = ({children}) => {
   const [cart, setCart] = useState(initialCart)
 
 
-
   // fetching Products
-    useEffect(() => {
+  useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await fetch('https://apiecommerce-dxby.onrender.com/api/products');
@@ -42,7 +40,6 @@ export const ProductsProvider = ({children}) => {
     }
 
     fetchCategories()
-
   }, []);
 
 
@@ -52,46 +49,43 @@ export const ProductsProvider = ({children}) => {
 
     setSelectedButton(initialSelectedButtonIndex);
     setSelectedCategory(categories[initialSelectedButtonIndex]);
-
-
   }, [categories]);
 
   const handleButtonClick = (index) => {
     setSelectedButton(index);
     setSelectedCategory(categories[index]);
-
   };
 
-const addToCart = (productId, selectedColor, selectedSize, selectedQuantity) => {
-  const existingProductIndex = cart.findIndex(
-    (item) =>
-      item._id === productId &&
-      item.selectedColor === selectedColor &&
-      item.selectedSize === selectedSize
-  );
+  const addToCart = (productId, selectedColor, selectedSize, selectedQuantity) => {
+    const existingProductIndex = cart.findIndex(
+      (item) =>
+        item._id === productId &&
+        item.selectedColor === selectedColor &&
+        item.selectedSize === selectedSize
+    );
 
-  if (existingProductIndex !== -1) {
-    // The product is already in the cart, update the quantity
-    const updatedCart = [...cart];
-    updatedCart[existingProductIndex].quantity += selectedQuantity;
-    setCart(updatedCart);
-  } else {
-    // The product is not in the cart with the same size and color, add it as a new item
-    const productToAdd = products.find((product) => product._id === productId);
-    if (productToAdd) {
-      setCart([
-        ...cart,
-        {
-          ...productToAdd,
-          selectedColor,
-          selectedSize,
-          quantity: selectedQuantity,
-        },
-      ]);
+    if (existingProductIndex !== -1) {
+      // The product is already in the cart, update the quantity
+      const updatedCart = [...cart];
+      updatedCart[existingProductIndex].quantity += selectedQuantity;
+      setCart(updatedCart);
+    } else {
+      // The product is not in the cart with the same size and color, add it as a new item
+      const productToAdd = products.find((product) => product._id === productId);
+
+      if (productToAdd) {
+        setCart([
+          ...cart,
+          {
+            ...productToAdd,
+            selectedColor,
+            selectedSize,
+            quantity: selectedQuantity,
+          },
+        ]);
+      }
     }
-  }
-};
-
+  };
 
   const removeFromCart = (productId, selectedColor, selectedSize) => {
     const updatedCart = cart.filter((product) => {
@@ -107,7 +101,6 @@ const addToCart = (productId, selectedColor, selectedSize, selectedQuantity) => 
     setCart(updatedCart);
   };
   
-
   const updateCartItemQuantity = (productId, selectedColor, selectedSize, newQuantity) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -120,13 +113,10 @@ const addToCart = (productId, selectedColor, selectedSize, selectedQuantity) => 
     );
   };  
   
-
-    // Storing the cart in localStorage every time it changes
-    useEffect(() => {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }, [cart]);
-
-
+  // Storing the cart in localStorage every time it changes
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const data = {
     selectedButton,
@@ -143,6 +133,7 @@ const addToCart = (productId, selectedColor, selectedSize, selectedQuantity) => 
   if (loading) {
     return <p className='loading'>Loading...</p>; //while waiting for the data, this p tag is gonna be shown
   }
+  
   return <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
 }
 
