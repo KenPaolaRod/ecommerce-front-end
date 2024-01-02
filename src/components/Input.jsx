@@ -5,7 +5,7 @@ function Input({inpType, onChange}) {
     username: {title: 'usernamee', type: 'text'},
     email: {title: 'Email', type: 'mail'},
     password: {title: 'paswordd', type:'password'},
-    ConfirmPassword: {title: 'Confirm Password', type:'password'}
+    confirmPassword: {title: 'Confirm Password', type:'password'}
   }
 
  

@@ -6,57 +6,46 @@ export const AuthContext = createContext()
 export const AuthProvider = ({children}) => {
   const [isLogIn, setIsLogIn] = useState(false);
 
-
-  const logIn = async (email, password) => {
+  const handleAuthentication = async (url, data, successMessg) => {
     try {
-      axios.post('https://apiecommerce-dxby.onrender.com/api/users/login', { email, password })
-      .then(response => {
-        const token = response.data.token
 
-        if (token) {
-          Cookies.set('jwt', token);
-          setIsLogIn(true);
-          console.log('You are In');
-        }
-      }).catch(error => {
-        console.error('No se recibió un token en la respuesta del backend', error.message);
-      });
+     const response = await axios.post(url, data, successMessg);
+
+      const { token } = response.data
+  
+      if (token) {
+        Cookies.set('jwt', token);
+        setIsLogIn(true);
+        console.log(successMessg);
+      } 
 
     } catch (err) {
-      console.log('Error while login');
+      console.log('No se recibió un token en la respuesta del backend', err.message);
     }
+ 
+
   }
 
-  const signUp = async (name, email, password, confirmPassword) => {
-    try {
-       axios.post('https://apiecommerce-dxby.onrender.com/api/users/signup', {
-        name,
-        email,
-        password, 
-        confirmPassword
-      })
-      .then(response => {
-        const token = response.data.token
 
-        if (token) {
-          Cookies.set('jwt', token);
-          setIsLogIn(true);
-          console.log('You are In');
-        }
-        
-      }).catch(err => {
-        console.log('No se recibió un token en la respuesta del backend', err.message);
-      });
+  const logIn = (email, password) => {
+    const url = 'https://apiecommerce-dxby.onrender.com/api/users/login'
+    const data = {email, password};
+    const successMessg = 'you are in'
 
-    } catch (err) {
+    handleAuthentication(url, data, successMessg)
+  } 
 
-    }
+  const signUp = (name, email, password, confirmPassword) => {
+    const url = 'https://apiecommerce-dxby.onrender.com/api/users/signup';
+    const data = {name, email, password, confirmPassword};
+    const successMessg = 'you are in';
+
+    handleAuthentication(url, data, successMessg)
   }
 
   const data = {
     logIn,
     signUp,
-    isLogIn
   }
 
   return <AuthContext.Provider value={data} >{children}</AuthContext.Provider>

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 function LogIn() {
   const authCtx = useContext(AuthContext);
-  const {isLogIn, logIn} = authCtx;
+  const {logIn} = authCtx;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

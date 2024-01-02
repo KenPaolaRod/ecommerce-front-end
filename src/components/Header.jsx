@@ -41,7 +41,7 @@ function Header() {
               <div className="subNav">
                 <ul>
                   <li> <Link to="/logIn">Log In </Link> </li>
-                  <li> <Link to="/sigIn">Sign In </Link> </li>
+                  <li> <Link to="/sigUp">Sign Up </Link> </li>
                 </ul>
               </div>
             )}
