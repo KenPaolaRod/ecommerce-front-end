@@ -1,58 +1,75 @@
-import { useEffect } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { AuthContext } from '../contex/AuthContext';
+import { ProductsContext } from '../contex/productsContext';
 
-// Custom component to wrap the PayPalButtons and handle currency changes
+
 export const PaypalBtn = ({ currency, showSpinner, amount }) => {
-	// usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
-	// This is the main reason to wrap the PayPalButtons in a new component
-	const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+  const authCtx = useContext(AuthContext);
+  const { isLogIn } = authCtx;
+  const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+  const [orderProcessed, setOrderProcessed] = useState(false);
+  const productsCtx = useContext(ProductsContext);
+  const { cart } = productsCtx;
 
-	useEffect(() => {
-		dispatch({
-			type: 'resetOptions',
-			value: {
-				...options,
-				currency: currency,
-			},
-		});
-	}, [currency, showSpinner]);
-	// This values are the props in the UI
-	const style = { layout: 'vertical' };
+  useEffect(() => {
+    dispatch({
+      type: 'resetOptions',
+      value: {
+        ...options,
+        currency: currency,
+      },
+    });
+  }, [currency, showSpinner]);
 
-	return (
-		<>
-			{showSpinner && isPending && <div className='spinner' />}
-			<PayPalButtons
-				style={style}
-				disabled={false}
-				forceReRender={[amount, currency, style]}
-				fundingSource={undefined}
-        // data es la info de la orden 
-				createOrder={(data, actions) => {
-					return actions.order
-						.create({
-							purchase_units: [
-								{
-									amount: {
-										currency_code: currency,
-										value: amount,
-									},
-								},
-							],
-						})
-						.then((orderId) => {
-							// Your code here after create the order
-							console.log('then');
-							return orderId;
-						});
-				}}
-				onApprove={function (data, actions) {
-					return actions.order.capture().then(function () {
-						// Your code here after capture the order
-						console.log('APPROVE');
-					});
-				}}
-			/>
-		</>
-	);
+  const style = { layout: 'vertical' };
+
+  const handleCreateOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            currency_code: currency,
+            value: amount,
+          },
+        },
+      ],
+    }).then((orderId) => {
+      // here I can show the confirmation with the order id
+      console.log('then', orderId);
+      return orderId;
+    });
+  };
+
+  const handleOnApprove = (data, actions) => {
+    return actions.order.capture().then(() => {
+      console.log('APPROVE', data);
+      setOrderProcessed(true)
+    });
+  };
+
+  const handlePaypalButtonClick = () => {
+    if (isLogIn) {
+      //Authenticated User: Allow the PayPal button action
+      dispatch({ type: 'forceResolve' });
+    } else {
+      // Unauthenticated User: Redirect user to login page
+      window.location.href = '/login';
+    }
+  };
+
+  return (
+    <>
+      {showSpinner && isPending && <div className='spinner' />}
+      <PayPalButtons
+        style={style}
+        disabled={!isLogIn} //Disable the button if the user is not authenticated
+        forceReRender={[amount, currency, style]}
+        createOrder={handleCreateOrder}
+        onApprove={handleOnApprove}
+        onClick={handlePaypalButtonClick} // checks if user is authenticated to process the payment
+      />
+      {orderProcessed && <p>Order processed and approved successfully</p> }
+    </>
+  );
 };

@@ -5,8 +5,6 @@ import ProductCard from '../home/ProductCard';
 import Button from '../Button'
 import { PaypalBtn } from '../PaypalBtn';
 
-
-
 function ShoppingCart() {
   const productsCtx = useContext(ProductsContext);
   const { cart, removeFromCart, updateCartItemQuantity } = productsCtx;
