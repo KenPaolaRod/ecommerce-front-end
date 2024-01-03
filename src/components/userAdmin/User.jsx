@@ -1,13 +1,13 @@
 import React from 'react'
-import Header from '../header'
+import Header from '../Header'
+import { useContext } from 'react';
+import { AuthContext } from '../../contex/AuthContext';
 import { FaShoppingCart } from "react-icons/fa";
 import { FaBoxArchive } from "react-icons/fa6";
 import { FaTruckArrowRight } from "react-icons/fa6";
 
-
-
-
 function User() {
+
   return (
     <div>
       <Header />

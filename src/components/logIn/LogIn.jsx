@@ -27,7 +27,7 @@ function LogIn() {
       <Button text={'Sign In'} onClick={handleLogin} />
       <div>
         <p style={{textAlign: "center"}}>No Account?</p>
-        <Link to={"/sigIn"}>Create Account</Link>
+        <Link to={"/sigUp"}>Create Account</Link>
       </div>
     </form>
     </>

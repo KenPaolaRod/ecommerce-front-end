@@ -12,19 +12,23 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSignUp = (e) => {
     e.preventDefault()
     if (password !== confirmPassword ) {
       const error = 'The passwords do not match. Please try again.';
-      console.log(error);
       setErrorMessage(error);
       return;
-    } 
+    } else if (!name || !email || !password || !confirmPassword) {
+      const error = 'Must Fill all fields';
+      setErrorMessage(error);
+      return;
 
-    setErrorMessage('')
-    signUp(name, email, password, confirmPassword);
+    } else {
+      setErrorMessage('')
+      signUp(name, email, password, confirmPassword);
+    }
 
 
   }
