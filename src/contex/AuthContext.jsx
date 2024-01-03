@@ -6,6 +6,7 @@ export const AuthContext = createContext()
 export const AuthProvider = ({children}) => {
   const [isLogIn, setIsLogIn] = useState(false);
 
+
   const handleAuthentication = async (url, data) => {
     try {
      const response = await axios.post(url, data);
@@ -23,22 +24,25 @@ export const AuthProvider = ({children}) => {
     } catch (err) {
       console.log('No se recibió un token en la respuesta del backend', err.message);
     }
+    return false
   }
 
 
-  const logIn = (email, password) => {
+  const logIn =  (email, password) => {
     const url = 'https://apiecommerce-dxby.onrender.com/api/users/login'
     const data = {email, password};
 
-    handleAuthentication(url, data);
+     handleAuthentication(url, data);
 
   } 
 
-  const signUp = (name, email, password, confirmPassword) => {
+  const signUp = async (name, email, password, confirmPassword) => {
     const url = 'https://apiecommerce-dxby.onrender.com/api/users/signup';
     const data = {name, email, password, confirmPassword};
 
-    handleAuthentication(url, data);
+   handleAuthentication(url, data);
+
+
   }
 
   const data = {

@@ -5,6 +5,7 @@ import './App.jsx'
 import { AuthProvider } from './contex/AuthContext.jsx'
 import {ProductsProvider } from './contex/productsContext.jsx'
 import { BrowserRouter } from "react-router-dom";
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -12,7 +13,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <ProductsProvider>
         <BrowserRouter>
-          <App />
+          <PayPalScriptProvider options={{"client-id": "AUuitEOyXAiZiOZVxIO7w19pa4v5POs0XF0sJ6OLgkUvrC-t_JMkaTtIX2hZ4EadnB2iWjlqVEK1zVPb"}}>
+           <App />
+          </PayPalScriptProvider>
         </BrowserRouter>
       </ProductsProvider>
     </AuthProvider>

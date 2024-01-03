@@ -3,6 +3,7 @@ import { ProductsContext } from '../../contex/productsContext'
 import Header from '../Header'
 import ProductCard from '../home/ProductCard';
 import Button from '../Button'
+import { PaypalBtn } from '../PaypalBtn';
 
 
 
@@ -16,6 +17,7 @@ function ShoppingCart() {
   // Function to calculate the cart total
   const calcularTotal = () => {
     return cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
+    
   };
     
 
@@ -58,6 +60,9 @@ function ShoppingCart() {
           </div>
         </div>
       )}
+
+      <PaypalBtn currency={'USD'} showSpinner={'false'} amount={calcularTotal()} />
+      
 
       {/* Aquí puedo incluir la sección de productos disponible */}
       {/* Por ejemplo, puedo usar el componente ProductsSection que ya has creado */}

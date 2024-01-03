@@ -26,7 +26,6 @@ function App() {
       <Route path='/UserAdmin' element={<User />}  />
       <Route path='/shoppingCard' element={<ShoppingCart />}  />
 
-
     </Routes>
     
   )
