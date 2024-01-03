@@ -13,14 +13,12 @@ function ShoppingCart() {
 
   const cartLength = cart ? cart.length : 0;
 
-
   // Function to calculate the cart total
   const calcularTotal = () => {
     return cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
     
   };
     
-
   return (
     <div className='cart-container'>
 

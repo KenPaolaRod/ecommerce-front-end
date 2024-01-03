@@ -51,16 +51,11 @@ function Header() {
                {isSubNavVisible && (
                   <div className='subNav'>
                         <ul>
-                      {isLogIn ? (
-                        <>
-                          <li> <Link to="/UserAdmin">User Admin </Link> </li>
-                        </>
-                      ) : (
+                      {isLogIn ? <li> <Link to="/UserAdmin">User Admin </Link> </li>  : 
                         <>
                           <li> <Link to="/logIn">Log In </Link> </li>
                           <li> <Link to="/sigUp">Sign Up </Link> </li>
-                        </>
-                      )}
+                        </>}
                     </ul>
                   </div>
                 )}
