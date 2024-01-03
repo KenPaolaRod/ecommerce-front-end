@@ -50,7 +50,7 @@ function Header() {
                   <FaUserAlt onClick={handleUserIconClick} /> 
                {isSubNavVisible && (
                   <div className='subNav'>
-                        <ul>
+                    <ul>
                       {isLogIn ? <li> <Link to="/UserAdmin">User Admin </Link> </li>  : 
                         <>
                           <li> <Link to="/logIn">Log In </Link> </li>
