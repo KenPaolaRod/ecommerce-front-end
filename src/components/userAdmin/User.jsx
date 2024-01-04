@@ -5,8 +5,12 @@ import { AuthContext } from '../../contex/AuthContext';
 import { FaShoppingCart } from "react-icons/fa";
 import { FaBoxArchive } from "react-icons/fa6";
 import { FaTruckArrowRight } from "react-icons/fa6";
+import { ProductsContext } from '../../contex/productsContext';
 
 function User() {
+
+  const productCtx = useContext(ProductsContext);
+  const {cart} = productCtx
 
   return (
     <div>
@@ -18,7 +22,7 @@ function User() {
         <h2>My Orders</h2>
         <div className="userCart orders-box">
           <FaShoppingCart />
-          <span>Cart 0</span>
+          <span>{cart.length}</span>
         </div>
 
         <div className="userProcesing orders-box">
