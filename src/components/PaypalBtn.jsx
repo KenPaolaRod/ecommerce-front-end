@@ -2,7 +2,7 @@ import { useEffect, useContext, useState } from 'react';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { AuthContext } from '../contex/AuthContext';
 import { ProductsContext } from '../contex/productsContext';
-
+import { useNavigate } from 'react-router-dom';
 
 export const PaypalBtn = ({ currency, showSpinner, amount }) => {
   const authCtx = useContext(AuthContext);
@@ -10,7 +10,8 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
   const [orderProcessed, setOrderProcessed] = useState(false);
   const productsCtx = useContext(ProductsContext);
-  const { cart } = productsCtx;
+  const { cart, resetCart } = productsCtx;
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch({
@@ -44,7 +45,9 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
   const handleOnApprove = (data, actions) => {
     return actions.order.capture().then(() => {
       console.log('APPROVE', data);
-      setOrderProcessed(true)
+      setOrderProcessed(true);
+      navigate('/confirmationPage')
+      resetCart()
     });
   };
 

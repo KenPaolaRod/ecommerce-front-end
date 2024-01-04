@@ -9,6 +9,7 @@ import SignIn from './components/signUp/SignUp'
 import User from './components/userAdmin/User'
 import ShoppingCart from './components/userAdmin/ShoppingCart'
 import SignUp from './components/signUp/SignUp'
+import ConfirmationPage from './components/ConfirmationPage'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
       <Route path='/sigUp' element={<SignUp />}  />
       <Route path='/UserAdmin' element={<User />}  />
       <Route path='/shoppingCard' element={<ShoppingCart />}  />
+      <Route path='/confirmationPage' element={<ConfirmationPage />}  />
 
     </Routes>
     

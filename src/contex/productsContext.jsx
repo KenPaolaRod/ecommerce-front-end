@@ -118,6 +118,10 @@ export const ProductsProvider = ({children}) => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
+  const resetCart = () => {
+    setCart([])
+  }
+
   const data = {
     selectedButton,
     categories,
@@ -127,7 +131,8 @@ export const ProductsProvider = ({children}) => {
     cart,
     addToCart,
     removeFromCart,
-    updateCartItemQuantity
+    updateCartItemQuantity,
+    resetCart
   };
 
   if (loading) {
