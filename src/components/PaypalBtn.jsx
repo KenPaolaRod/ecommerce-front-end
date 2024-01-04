@@ -8,9 +8,8 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
   const authCtx = useContext(AuthContext);
   const { isLogIn } = authCtx;
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-  const [orderProcessed, setOrderProcessed] = useState(false);
   const productsCtx = useContext(ProductsContext);
-  const { cart, resetCart } = productsCtx;
+  const {resetCart } = productsCtx;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,17 +35,15 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
         },
       ],
     }).then((orderId) => {
-      // here I can show the confirmation with the order id
-      console.log('then', orderId);
       return orderId;
     });
   };
 
   const handleOnApprove = (data, actions) => {
     return actions.order.capture().then(() => {
-      console.log('APPROVE', data);
-      setOrderProcessed(true);
-      navigate('/confirmationPage')
+      // sending order number through params
+      const orderId = data.orderID;
+      navigate('/confirmationPage?orderNumber=' + orderId, { replace: true });
       resetCart()
     });
   };
@@ -72,7 +69,6 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
         onApprove={handleOnApprove}
         onClick={handlePaypalButtonClick} // checks if user is authenticated to process the payment
       />
-      {orderProcessed && <p>Order processed and approved successfully</p> }
     </>
   );
 };
