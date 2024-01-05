@@ -12,31 +12,29 @@ function Header() {
   const productsCtx = useContext(ProductsContext);
   const { cart } = productsCtx;
   const authCtx = useContext(AuthContext);
-  const { isLogIn } = authCtx;
+  const { currentUser } = authCtx;
 
   const navigate = useNavigate()
 
-  // console.log(isLogIn);
+  const handleMouseEnter = () => {
+    setIsSubNavVisible(true);
+  };
 
-    const handleMouseEnter = () => {
-      setIsSubNavVisible(true);
-    };
+  const handleMouseLeave = () => {
+    setIsSubNavVisible(true);
 
-    const handleMouseLeave = () => {
-      setIsSubNavVisible(true);
+    setTimeout(() => {
+      setIsSubNavVisible(false);
+    }, 2000);
+  };
 
-      setTimeout(() => {
-        setIsSubNavVisible(false);
-      }, 2000);
-    };
+  useEffect(() => {
+    return () => clearTimeout();
+  }, [isSubNavVisible]);
 
-    useEffect(() => {
-      return () => clearTimeout();
-    }, [isSubNavVisible]);
-
-    const handleUserIconClick = () => {
-      isLogIn ? navigate('/UserAdmin') : navigate('/login');
-    };
+  const handleUserIconClick = () => {
+    currentUser().loggedIn ? navigate('/UserAdmin') : navigate('/login');
+  };
     
   return (
     <header>
@@ -51,7 +49,7 @@ function Header() {
                {isSubNavVisible && (
                   <div className='subNav'>
                     <ul>
-                      {isLogIn ? <li> <Link to="/UserAdmin">User Admin </Link> </li>  : 
+                      {currentUser().loggedIn ? <li> <Link to="/UserAdmin">User Admin </Link> </li>  : 
                         <>
                           <li> <Link to="/logIn">Log In </Link> </li>
                           <li> <Link to="/sigUp">Sign Up </Link> </li>

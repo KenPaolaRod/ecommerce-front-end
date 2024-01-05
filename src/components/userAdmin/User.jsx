@@ -12,15 +12,13 @@ function User() {
   const productCtx = useContext(ProductsContext);
   const {cart} = productCtx
   const authCtx = useContext(AuthContext);
-  const {userName} = authCtx;
-
-  console.log(userName + 'usercomp');
+  const {currentUser} = authCtx;
 
   return (
     <div>
       <Header />
 
-      <h1>Hello, {userName}</h1>
+      <h1>Hello, {currentUser().userName}</h1>
 
       <article className='userAdmin'>
         <h2>My Orders</h2>

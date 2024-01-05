@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const PaypalBtn = ({ currency, showSpinner, amount }) => {
   const authCtx = useContext(AuthContext);
-  const { isLogIn } = authCtx;
+  const { currentUser } = authCtx;
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
   const productsCtx = useContext(ProductsContext);
   const {resetCart } = productsCtx;
@@ -49,7 +49,7 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
   };
 
   const handlePaypalButtonClick = () => {
-    if (isLogIn) {
+    if (currentUser().loggedIn) {
       //Authenticated User: Allow the PayPal button action
       dispatch({ type: 'forceResolve' });
     } else {
@@ -63,7 +63,7 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
       {showSpinner && isPending && <div className='spinner' />}
       <PayPalButtons
         style={style}
-        disabled={!isLogIn} //Disable the button if the user is not authenticated
+        disabled={!currentUser().loggedIn} //Disable the button if the user is not authenticated
         forceReRender={[amount, currency, style]}
         createOrder={handleCreateOrder}
         onApprove={handleOnApprove}
