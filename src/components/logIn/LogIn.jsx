@@ -21,11 +21,11 @@ function LogIn() {
     <>
     <Header />
     <form className='log-in' action='post'>
-      <div>LogIn</div>
+      <h1>Log In</h1>
       <Input inpType='email' onChange={(e) => setEmail(e.target.value)} />
       <Input inpType='password' onChange={(e) => setPassword(e.target.value)} />
-      <Button text={'Sign In'} onClick={handleLogin} />
-      <div>
+      <Button text={'Log In'} btnClass={"log-sign-btn"} onClick={handleLogin} />
+      <div className='no-account'>
         <p style={{textAlign: "center"}}>No Account?</p>
         <Link to={"/sigUp"}>Create Account</Link>
       </div>

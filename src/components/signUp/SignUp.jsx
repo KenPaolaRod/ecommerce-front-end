@@ -35,16 +35,16 @@ function SignUp() {
   return (
     <div>
       <Header />
-      <h1>Sign In</h1>
       {errorMessage && <p>{errorMessage}</p>}
 
       <form className='signIn' action='post'>
+      <h1>Sign In</h1>
         <Input inpType='username'  onChange={e => setname(e.target.value)}/>
         <Input inpType='email'  onChange={e => setEmail(e.target.value)}/>
         <Input inpType='password'  onChange={e => setPassword(e.target.value)}/>
         <Input inpType='confirmPassword' onChange={e => setConfirmPassword(e.target.value)}/>
 
-        <Button text={'sign In'} onClick={handleSignUp} type={'submit'}/>
+        <Button text={'sign In'} btnClass={"log-sign-btn"} onClick={handleSignUp} type={'submit'}/>
       </form>
     </div>
   )

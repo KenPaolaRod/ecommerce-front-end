@@ -237,11 +237,41 @@ nav a:hover{
   display: grid;
   justify-items: center;
   row-gap: 1rem;
+  margin-top: 8rem;
 }
 
 .log-in input, .signIn input {
-  width: 31rem;
+  width: 17rem;
+  background-color: var(--bg-color-medium);
+  border: none;
+  padding: .8rem;
 }
+
+.log-in input::-webkit-input-placeholder, .signIn input::-webkit-input-placeholder {
+  color: rgba(145, 117, 219, 0.31);
+}
+
+.log-in input::-moz-placeholder, .signIn input::-moz-placeholder {
+  color: rgba(145, 117, 219, 0.31);
+}
+
+.log-in input:-ms-input-placeholder, .signIn input:-ms-input-placeholder {
+  color: rgba(145, 117, 219, 0.31);
+}
+
+.log-in input::-ms-input-placeholder, .signIn input::-ms-input-placeholder {
+  color: rgba(145, 117, 219, 0.31);
+}
+
+.log-in input::placeholder, .signIn input::placeholder {
+  color: rgba(145, 117, 219, 0.31);
+}
+
+.no-account {
+  margin-top: 2rem;
+}
+
+
 
 input {
   background-color: var(--bg-color-medium);
@@ -357,6 +387,20 @@ input {
     width: 30rem;
   }
 
+}
+
+.log-sign-btn {
+  background-color: var(--bg-color-dark);
+  width: 120px;
+  height: 40px;
+  font-size: .9rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+form input {
+  width: 10px;
+  background-color: red;
 }
 
 @media screen and (min-width: 1024px ) {
