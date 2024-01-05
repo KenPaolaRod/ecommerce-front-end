@@ -12,7 +12,7 @@ function Header() {
   const productsCtx = useContext(ProductsContext);
   const { cart } = productsCtx;
   const authCtx = useContext(AuthContext);
-  const { currentUser } = authCtx;
+  const { currentUser, deleteCookie } = authCtx;
 
   const navigate = useNavigate()
 
@@ -49,7 +49,12 @@ function Header() {
                {isSubNavVisible && (
                   <div className='subNav'>
                     <ul>
-                      {currentUser().loggedIn ? <li> <Link to="/UserAdmin">User Admin </Link> </li>  : 
+                      {currentUser().loggedIn ? 
+                      <div>
+                        <li> <Link to="/UserAdmin">User Admin </Link> </li>
+                        <li onClick={deleteCookie}><Link to={"/logIn"}>Log Out</Link></li>
+                      </div>
+                        : 
                         <>
                           <li> <Link to="/logIn">Log In </Link> </li>
                           <li> <Link to="/sigUp">Sign Up </Link> </li>

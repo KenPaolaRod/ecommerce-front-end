@@ -16,27 +16,20 @@ function ProductsSection() {
     <article className='products-section'>
       <Aside />
       <div className='cards-container'>
-      <h1>{selectedCategory}</h1>
-
-      
-        {    
-                
-          category.map(el => (
-           <div key={el._id}>
-            <Link style={{textDecoration: 'none'}}  to={`/product/${el._id} `}>
-            <ProductCard 
-            key={el._id} btnClass="btn-aside" 
-            pictures={el.pictures[0]} 
-            title={el.title} 
-            price={el.price}
-            />
-            </Link>
-            <button onClick={() => addToCart(el)}>Agregar al carrito</button>
-
-            </div>
-            ))
-
-        }
+        <h1>{selectedCategory}</h1>
+          {category.map(el => (
+            <div key={el._id}>
+              <Link style={{textDecoration: 'none'}}  to={`/product/${el._id} `}>
+              <ProductCard 
+              key={el._id} btnClass="btn-aside" 
+              pictures={el.pictures[0]} 
+              title={el.title} 
+              price={el.price}
+              />
+              </Link>
+              </div>
+              ))
+          }
       </div>
 
     </article>

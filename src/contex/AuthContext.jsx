@@ -23,7 +23,6 @@ export const AuthProvider = ({children}) => {
     } catch (err) {
       console.log('No se recibió un token en la respuesta del backend', err.message);
     }
-
     return false
   }
 
@@ -67,10 +66,16 @@ export const AuthProvider = ({children}) => {
     }
   }
 
+  const deleteCookie = () => {
+    Cookies.remove('jwt');
+    setIsLogIn(false)
+  }
+
   const data = {
     logIn,
     signUp,
-    currentUser
+    currentUser,
+    deleteCookie
   }
 
   return <AuthContext.Provider value={data} >{children}</AuthContext.Provider>
