@@ -24,6 +24,13 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
 
   const style = { layout: 'vertical' };
 
+  const containerStyle = {
+    width: '250px',
+    margin: '0 auto',
+    paddingTop: '1rem'
+  };
+  
+
   const handleCreateOrder = (data, actions) => {
     return actions.order.create({
       purchase_units: [
@@ -60,6 +67,7 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
 
   return (
     <>
+    <div style={containerStyle} className='containerStyle'>
       {showSpinner && isPending && <div className='spinner' />}
       <PayPalButtons
         style={style}
@@ -69,6 +77,7 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
         onApprove={handleOnApprove}
         onClick={handlePaypalButtonClick} // checks if user is authenticated to process the payment
       />
+      </div>
     </>
   );
 };

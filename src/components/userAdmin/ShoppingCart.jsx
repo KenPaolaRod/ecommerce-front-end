@@ -4,6 +4,8 @@ import Header from '../Header'
 import ProductCard from '../home/ProductCard';
 import Button from '../Button'
 import { PaypalBtn } from '../PaypalBtn';
+import { FaRegTrashAlt } from "react-icons/fa";
+
 
 function ShoppingCart() {
   const productsCtx = useContext(ProductsContext);
@@ -19,16 +21,15 @@ function ShoppingCart() {
     
   return (
     <div className='cart-container'>
-
       <Header />
 
-      <h2>Carrito de Compras</h2>
+      <h1>Shopping Cart</h1>
       {cartLength === 0 ? (
-        <p>El carrito está vacío</p>
+        <h1>El carrito está vacío</h1>
       ) : (
-        <div>
+        <div className='cart-products'>
           {cart.map((product) => (
-            <div key={`${product._id}-${product.selectedSize}-${product.selectedColor}`}>
+            <div key={`${product._id}-${product.selectedSize}-${product.selectedColor}`} className='cart-prduct'>
             <ProductCard 
             btnClass="btn-aside" 
             pictures={product.pictures} 
@@ -36,30 +37,24 @@ function ShoppingCart() {
             price={product.price}
             />
             <div className="quantity-controls">
-              <label>Cantidad:</label>
               <input
                 type="number"
                 min="1"
                 value={typeof product.quantity === 'number' ? product.quantity : 1} 
                 onChange={(e) => updateCartItemQuantity(product._id, product.selectedColor, product.selectedSize, parseInt(e.target.value))  }
-
               />
             </div>
             <div>
-            <Button text={'remove'} onClick={() => removeFromCart(product._id, product.selectedColor, product.selectedSize)} />
+              <Button text={<FaRegTrashAlt />} btnClass={'remove-btn'} onClick={() => removeFromCart(product._id, product.selectedColor, product.selectedSize)} />
             </div>
             </div>
-           
           ))}
           <div className='cart-total'>
             <h4>Total: ${calcularTotal()}</h4>
           </div>
         </div>
       )}
-
       <PaypalBtn currency={'USD'} showSpinner={'false'} amount={calcularTotal()} />
-      
-
       {/* Aquí puedo incluir la sección de productos disponible */}
       {/* Por ejemplo, puedo usar el componente ProductsSection que ya has creado */}
       {/* <ProductsSection /> */}

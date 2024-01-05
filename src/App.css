@@ -164,7 +164,7 @@ nav a:hover{
 
 .product-card {
   width: 280px;
-  height: 300px;
+  /* height: 300px; */
   color: var(--color-dark);
   
 }
@@ -271,8 +271,6 @@ nav a:hover{
   margin-top: 2rem;
 }
 
-
-
 input {
   background-color: var(--bg-color-medium);
   border-radius: 2.2rem;
@@ -317,6 +315,47 @@ input {
   margin-top: 5rem;
 }
 
+.cart-container h1 {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.cart-prduct {
+  display: grid;
+  margin-top: 2rem;
+  border: 1px solid var(--bg-color-dark);
+  width: 250px;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.remove-btn {
+  background-color: transparent;
+  color: var(--bg-color-dark);
+  font-size: 1.3rem;
+}
+
+.cart-products {
+  display: grid;
+  row-gap: 2rem;
+  justify-content: center;
+}
+
+.cart-total {
+  font-size: 1.7rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.spinner {
+  width: 100px;
+}
+
+.containerStyle {
+  width: 250px;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
 
 @-webkit-keyframes bounce {
   0% {
@@ -354,7 +393,6 @@ input {
     width: 130px;
     row-gap: 1rem;
     align-items: center;
-    /* height: 300px; */
   }
 
   .products-section {
@@ -367,6 +405,7 @@ input {
     justify-items: start;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 3rem;
+    row-gap: 4rem;
   }
 
   .product-card {
@@ -423,6 +462,10 @@ form input {
   .product-card img {
     width: 200px;
     height: 270px;
+  }
+
+    .quantity-controls {
+    padding-top: 1.9rem;
   }
 
 }
