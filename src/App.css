@@ -276,10 +276,16 @@ input {
   border-radius: 2.2rem;
 }
 
-.userAdmin {
+.admiArea h1 {
+  text-align: center;
+  color: var(--bg-color-dark);
+  padding: 1.7rem;
+}
+
+.admiArea article {
   background-color: var(--bg-color-medium);
   display: grid;
-  width: 17.5rem;
+  width: 23.5rem;
   margin: 2rem auto;
   border-radius: 1.8rem;
   padding: 1rem;
@@ -290,7 +296,7 @@ input {
        column-gap: 1.5rem;
 }
 
-.userAdmin h2 {
+.admiArea h2 {
   font-size: 1.3rem;
   color: var(--bg-color-dark);
   grid-column: 1 / -1;

@@ -15,7 +15,7 @@ function User() {
   const {currentUser} = authCtx;
 
   return (
-    <div>
+    <div className='admiArea'>
       <Header />
 
       <h1>Hello, {currentUser().userName}</h1>
