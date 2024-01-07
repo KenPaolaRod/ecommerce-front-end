@@ -6,6 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaBoxArchive } from "react-icons/fa6";
 import { FaTruckArrowRight } from "react-icons/fa6";
 import { ProductsContext } from '../../contex/productsContext';
+import Footer from '../Footer';
 
 function User() {
 
@@ -37,6 +38,8 @@ function User() {
           <span>Sent 0</span>
         </div>
       </article>
+
+      <Footer />
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { AuthContext } from '../../contex/AuthContext'
 import Header from '../Header'
 import Input from '../Input'
 import Button from '../Button'
+import Footer from '../Footer'
 
 function SignUp() {
   const authCtx = useContext(AuthContext);
@@ -46,6 +47,8 @@ function SignUp() {
 
         <Button text={'sign In'} btnClass={"log-sign-btn"} onClick={handleSignUp} type={'submit'}/>
       </form>
+
+      <Footer />
     </div>
   )
 }

@@ -5,6 +5,7 @@ import Header from '../Header'
 import Input from '../Input'
 import Button from '../Button'
 import { Link } from 'react-router-dom'
+import Footer from '../Footer'
 
 function LogIn() {
   const authCtx = useContext(AuthContext);
@@ -30,6 +31,7 @@ function LogIn() {
         <Link to={"/sigUp"}>Create Account</Link>
       </div>
     </form>
+    <Footer />
     </>
   )
 }

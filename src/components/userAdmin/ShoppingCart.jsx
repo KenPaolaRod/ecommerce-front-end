@@ -5,6 +5,7 @@ import ProductCard from '../home/ProductCard';
 import Button from '../Button'
 import { PaypalBtn } from '../PaypalBtn';
 import { FaRegTrashAlt } from "react-icons/fa";
+import Footer from '../Footer';
 
 
 function ShoppingCart() {
@@ -55,9 +56,8 @@ function ShoppingCart() {
         </div>
       )}
       <PaypalBtn currency={'USD'} showSpinner={'false'} amount={calcularTotal()} />
-      {/* Aquí puedo incluir la sección de productos disponible */}
-      {/* Por ejemplo, puedo usar el componente ProductsSection que ya has creado */}
-      {/* <ProductsSection /> */}
+
+      <Footer />
     </div>
   );
 }

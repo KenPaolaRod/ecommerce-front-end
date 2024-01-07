@@ -155,11 +155,9 @@ nav a:hover{
 
 .cards-container h1 {
   grid-column: 1 /-1;
-  text-align: start;
-  justify-self: start;
+  text-align: center;
   padding-bottom: 1.5rem ;
   font-size: 3rem;
-  
 }
 
 .product-card {
@@ -285,7 +283,7 @@ input {
 .admiArea article {
   background-color: var(--bg-color-medium);
   display: grid;
-  width: 23.5rem;
+  width: 17.5rem;
   margin: 2rem auto;
   border-radius: 1.8rem;
   padding: 1rem;
@@ -294,6 +292,7 @@ input {
   row-gap: 1rem;
   -moz-column-gap: 1.5rem;
        column-gap: 1.5rem;
+  margin-bottom: 16rem;
 }
 
 .admiArea h2 {
@@ -361,6 +360,27 @@ input {
   width: 250px;
   margin: 0 auto;
   padding-top: 1rem;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  width: 12.5rem;
+  margin: 0 auto;
+  row-gap: 1rem;
+  margin-top: 7rem;
+}
+
+footer img {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 6.5rem;
+}
+
+.f-icon {
+  justify-self: center;
+  font-size: 2rem;
 }
 
 @-webkit-keyframes bounce {
