@@ -39,7 +39,7 @@ function SignUp() {
       {errorMessage && <p>{errorMessage}</p>}
 
       <form className='signIn' action='post'>
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
         <Input inpType='username'  onChange={e => setname(e.target.value)}/>
         <Input inpType='email'  onChange={e => setEmail(e.target.value)}/>
         <Input inpType='password'  onChange={e => setPassword(e.target.value)}/>
