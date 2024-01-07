@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import { useSearchParams } from 'react-router-dom'
+import Footer from './Footer';
 
 
 function ConfirmationPage() {
@@ -10,7 +11,10 @@ const orderNumber = searchParams.get('orderNumber');
   return (
     <div>
       <Header/>
-      <div>Thank you for your purchase, your order confirmation number is: {orderNumber}</div>
+      <div className='confirmationPage'>
+        <p>Thank you for your purchase, your order confirmation number is: {orderNumber}</p>
+      </div>
+      <Footer />
     </div>
   )
 }

@@ -26,7 +26,7 @@ function ShoppingCart() {
 
       <h1>Shopping Cart</h1>
       {cartLength === 0 ? (
-        <h1>The cart is empty</h1>
+        <p className='empty'>The cart is empty</p>
       ) : (
         <div className='cart-products'>
           {cart.map((product) => (

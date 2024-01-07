@@ -172,7 +172,6 @@ nav a:hover{
 
 }
 
-
 .product-card img {
   width: 150px;
   height: 200px;
@@ -223,6 +222,13 @@ nav a:hover{
 .price span {
   color: var(--bg-color-dark);
   font-weight: 600;
+}
+
+.empty {
+  color: #9175DB;
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 5rem;
 }
 
 .product-info .btn.btnClicked {
@@ -383,6 +389,18 @@ footer img {
   font-size: 2rem;
 }
 
+.confirmationPage {
+  background-color: var(--bg-color-dark);
+  width: 18rem;
+  padding: 3rem;
+  margin: 13rem auto;
+  border-radius: 3.6rem;
+}
+
+.confirmationPage p {
+  color: var(--bg-color-light);
+}
+
 @-webkit-keyframes bounce {
   0% {
     transform: translateX(0)
@@ -452,6 +470,13 @@ footer img {
     width: 30rem;
   }
 
+  .confirmationPage {
+    width: 28rem;
+    padding: 3rem;
+    margin: 10rem auto;
+    font-size: 1.8rem;
+  }
+
 }
 
 .log-sign-btn {
@@ -492,6 +517,11 @@ form input {
 
     .quantity-controls {
     padding-top: 1.9rem;
+  }
+
+  .confirmationPage {
+    font-size: 1.4rem;
+    width: 33rem;
   }
 
 }
