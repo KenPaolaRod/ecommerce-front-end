@@ -45,7 +45,7 @@ function SignUp() {
         <Input inpType='password'  onChange={e => setPassword(e.target.value)}/>
         <Input inpType='confirmPassword' onChange={e => setConfirmPassword(e.target.value)}/>
 
-        <Button text={'sign In'} btnClass={"log-sign-btn"} onClick={handleSignUp} type={'submit'}/>
+        <Button text={'sign Up'} btnClass={"log-sign-btn"} onClick={handleSignUp} type={'submit'}/>
       </form>
 
       <Footer />
