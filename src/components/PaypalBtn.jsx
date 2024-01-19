@@ -61,7 +61,7 @@ export const PaypalBtn = ({ currency, showSpinner, amount }) => {
       dispatch({ type: 'forceResolve' });
     } else {
       // Unauthenticated User: Redirect user to login page
-      window.location.href = '/login';
+      window.location.href = '/logIn';
     }
   };
 
